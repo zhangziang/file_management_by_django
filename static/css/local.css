@@ -1,0 +1,37 @@
+body {
+    font-family: "Helvetica Neue", "Helvetica", "Lucida Grande", "Arial", "Hiragino Sans GB", "Microsoft Yahei", "WenQuanYi Micro Hei", "sans-serif";
+    margin: 0;
+}
+.navbar-inverse {
+  background-color: #cf4646;
+  border-color: transparent;
+  border-radius: 0px;
+}
+.navbar-inverse .navbar-brand {
+  color: #efefef;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #e8e8e8;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .active > a:hover {
+  color: #fff;
+  background-color: transparent;
+}
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border-color: #CA3131;
+}
+.navbar-inverse .navbar-toggle {
+  border-color: #fff;
+}
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: transparent;
+}
+.add-border {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #eee;
+}

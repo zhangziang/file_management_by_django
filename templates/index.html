@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for one in files %}
+<div class="row add-border">
+    <p>{{ one.course.name }} · {{ one.add_time|date:'Y-m-d' }}</p>
+    <p><a href="" style="font-size: 1.5em" class="show_link">{{ one.name }}</a></p>
+    <div class="test" style="display: none;">
+        <p style="border-left:2px solid #cf4646; padding-left: 4px;">{{ one.course.major.college.name }}-{{ one.course.major.name }}<br/><a href="{{ one.the_file.url }}">下载<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a> <a href="" class="hide_link">收起<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a></p>
+        <p style="color: #777;">{{ one.intro }}</p>
+    </div> 
+</div>
+{% endfor %}
+<nav>
+  <ul class="pager">
+    {% if before_page %}
+    <li><a href="{% url 'list' page_last %}" style="border-radius: 0px;">上一页</a></li>
+    {% else %}
+    <li class="disabled"><a href="" style="border-radius: 0px;">上一页</a></li>
+    {% endif %}
+    {% if after_page %}
+    <li><a href="{% url 'list' page_next %}" style="border-radius: 0px;">下一页</a></li>
+    {% else %}
+    <li class="disabled"><a href="" style="border-radius: 0px;">下一页</a></li>
+    {% endif %}
+  </ul>
+</nav>
+<script>
+    $(function(){
+        $(".show_link").click(function(event) {
+            event.preventDefault();
+            $(this).parent().next().show(500);
+        });
+        $(".hide_link").click(function(event) {
+            event.preventDefault();
+            $(this).parent().parent().hide(500);
+        });
+    }
+    );
+</script>
+{% endblock %}
