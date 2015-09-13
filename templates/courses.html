@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for college in colleges %}
+<div class="row">
+    <h3 style="border-left:2px solid #cf4646; padding-left: 4px;">{{ college.name }}</h3>
+    {% for major in college.major_set.all %}
+        <p style="padding-left: 6px; font-size: 1.2em;">{{ major.name }}</p>
+        <p style="padding-left: 6px;">
+        {% for course in major.course_set.all %}
+            <a href="{% url 'course' course.pk %}">- {{ course.name }}</a><br>
+        {% endfor %}
+        </p>
+    {% endfor %}
+</div>
+{% endfor %}
+{% endblock %}

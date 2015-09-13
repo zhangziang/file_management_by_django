@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if exist %}
+    <div class="row" style="background: #efefef; padding: 20px 0; margin-bottom: 20px;">
+        <h3 style="border-left:2px solid #cf4646; padding-left: 4px; margin: 0;">{{ course.name }}</h3>
+        <p style="margin: 5px 0 0 0; padding-left: 6px; color: #777;">{{ course.major.college.name }} {{ course.major.name }}</p>
+        <p style="margin: 5px 0 0 0; padding-left: 6px; color: #777;">授课老师：{{ course.teacher }}</p>
+        {% if course.intro %}
+        <p style="margin: 5px 0 0 0; padding-left: 6px; color: #777;">{{ course.intro }}</p>
+        {% endif %}
+    </div>
+    {% for file in files %}
+        <div class="row">
+            <p  style="font-size: 1.2em">2015-09-10 <a href="" class="show_link">{{ file.name }}</a></p>
+            <div class="test" style="display: none;">
+                <p style="border-left:2px solid #cf4646; padding-left: 4px;"><a href="{{ file.the_file.url }}">下载<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a> <a href="" class="hide_link">收起<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a></p>
+                <p style="color: #777;">{{ file.intro }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    <script>
+        $(function(){
+            $(".show_link").click(function(event) {
+                event.preventDefault();
+                $(this).parent().next().show(500);
+            });
+            $(".hide_link").click(function(event) {
+                event.preventDefault();
+                $(this).parent().parent().hide(500);
+            });
+        }
+        );
+    </script>
+{% else %}
+    <div class="row" style="background: #efefef; padding: 20px 0; margin-bottom: 20px;">
+        <h3 style="border-left:2px solid #cf4646; padding-left: 4px; margin: 0;">课程不存在</h3>
+    </div>
+{% endif %}
+{% endblock %}

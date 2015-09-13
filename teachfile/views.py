@@ -2,13 +2,15 @@
 
 from django.views.generic import TemplateView
 from apps.file.models import File
+from apps.college.models import College
+from apps.course.models import Course
+
 
 class IndexView(TemplateView):
     one_page_item = 20
     template_name = 'index.html'
 
     def get(self, request, page='1'):
-        print "hahahah"
         page = int(page)
         files = File.objects.all().order_by('-add_time')
         files_num = len(files)
@@ -40,3 +42,30 @@ class IndexView(TemplateView):
         return self.render_to_response(context)
 
 
+class CourseListView(TemplateView):
+    template_name = 'courses.html'
+
+    def get(self, request, *args, **kwargs):
+        colleges = College.objects.all()
+        context = {
+            'colleges': colleges,
+        }
+        return self.render_to_response(context)
+
+
+class CourseView(TemplateView):
+    template_name = 'course.html'
+
+    def get(self, request, id):
+        id = int(id)
+        context = dict()
+        try:
+            course = Course.objects.get(pk=id)
+            files = course.file_set.all().order_by('-add_time')
+            context['exist'] = True
+            context['files'] = files
+            context['course'] = course
+        except Course.DoesNotExist:
+            context['exist'] = False
+
+        return self.render_to_response(context)

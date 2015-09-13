@@ -19,10 +19,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.views.generic import TemplateView
 
-from .views import IndexView
+from .views import IndexView, CourseListView, CourseView
 
 urlpatterns = [
-    url(r'^$', IndexView.as_view(template_name="index.html"), name='home'),
-    url(r'^page/(?P<page>[0-9]+)/$', IndexView.as_view(template_name="index.html"), name='list'),
+    url(r'^$', IndexView.as_view(), name='home'),
+    url(r'^page/(?P<page>[0-9]+)/$', IndexView.as_view(), name='list'),
+    url(r'^courses/$', CourseListView.as_view(), name='courses'),
+    url(r'^course/(?P<id>[0-9]+)/$', CourseView.as_view(), name='course'),
     url(r'^admin/', include(admin.site.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

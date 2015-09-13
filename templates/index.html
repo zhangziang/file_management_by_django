@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
-{% for one in files %}
+{% for file in files %}
 <div class="row add-border">
-    <p>{{ one.course.name }} · {{ one.add_time|date:'Y-m-d' }}</p>
-    <p><a href="" style="font-size: 1.5em" class="show_link">{{ one.name }}</a></p>
+    <p>{{ file.course.name }} · {{ file.add_time|date:'Y-m-d' }}</p>
+    <p><a href="" style="font-size: 1.5em" class="show_link">{{ file.name }}</a></p>
     <div class="test" style="display: none;">
-        <p style="border-left:2px solid #cf4646; padding-left: 4px;">{{ one.course.major.college.name }}-{{ one.course.major.name }}<br/><a href="{{ one.the_file.url }}">下载<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a> <a href="" class="hide_link">收起<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a></p>
-        <p style="color: #777;">{{ one.intro }}</p>
+        <p style="border-left:2px solid #cf4646; padding-left: 4px;">{{ file.course.major.college.name }}-{{ file.course.major.name }}<br/><a href="{{ file.the_file.url }}">下载<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a> <a href="" class="hide_link">收起<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a></p>
+        <p style="color: #777;">{{ file.intro }}</p>
     </div> 
 </div>
 {% endfor %}
