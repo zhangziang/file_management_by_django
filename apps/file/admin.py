@@ -7,3 +7,5 @@ from .models import File
 @admin.register(File)
 class FileAdmin(admin.ModelAdmin):
     readonly_fields = ['add_time', ]
+    list_display = ('name', 'add_time')
+
